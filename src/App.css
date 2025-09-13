@@ -116,10 +116,21 @@ header {
 
 /* Injected autoscroll CSS */
 
-/* Autoscroll / recent winnings styling (injected) */
-.mourgan-hide-scroll { overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; display:flex; flex-direction:column; flex:1 1 auto; padding-bottom:12px; position:relative; }
-.mourgan-hide-scroll::-webkit-scrollbar { width: 0; height: 0; display: none; }
-.mourgan-hide-scroll .recent-item, .mourgan-hide-scroll > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mourgan-hide-scroll::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 32px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0)); }
-/* ensure parent containers allow stretch */
-.sidebar, .recent-pane, .recent-sidebar, .recent-container { display:flex; flex-direction:column; }
+/* Autoscroll / recent winnings styling */
+.recent-list, .recent-winnings, .recent-container {
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding-bottom: 12px;
+}
+.recent-list::-webkit-scrollbar, 
+.recent-winnings::-webkit-scrollbar,
+.recent-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
