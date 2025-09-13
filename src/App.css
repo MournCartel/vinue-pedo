@@ -114,10 +114,12 @@ header {
   color: #f1f1f1;
 }
 
-/* Autoscroll additions */
+/* Injected autoscroll CSS */
 
-/* Autoscroll helper styles */
-.recent-winnings, .recent-list, .recent-winnings-inner { display: flex; flex-direction: column; height: 100%; }
-.autoscroll-hide { overflow: auto; scrollbar-width: none; -ms-overflow-style: none; }
-.autoscroll-hide::-webkit-scrollbar { display: none; }
-.recent-winnings-inner { gap: 8px; padding: 8px; }
+/* Autoscroll / recent winnings styling (injected) */
+.mourgan-hide-scroll { overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth; display:flex; flex-direction:column; flex:1 1 auto; padding-bottom:12px; position:relative; }
+.mourgan-hide-scroll::-webkit-scrollbar { width: 0; height: 0; display: none; }
+.mourgan-hide-scroll .recent-item, .mourgan-hide-scroll > * { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mourgan-hide-scroll::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 32px; z-index: 2; pointer-events: none; background: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0)); }
+/* ensure parent containers allow stretch */
+.sidebar, .recent-pane, .recent-sidebar, .recent-container { display:flex; flex-direction:column; }
