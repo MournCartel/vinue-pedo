@@ -15,6 +15,21 @@ function loadState(){
 function saveState(obj){ try{ localStorage.setItem(LS_KEY, JSON.stringify(obj)) }catch(e){} }
 
 export default function App(){
+
+// auto-scroll recent winnings to bottom (smooth)
+const recentListRef = useRef(null);
+useEffect(() => {
+  try {
+    if (recentListRef && recentListRef.current) {
+      // smooth scroll to bottom quickly
+      recentListRef.current.scrollTo({ top: recentListRef.current.scrollHeight, behavior: 'smooth' });
+    }
+  } catch (e) {
+    // ignore in case DOM not ready
+  }
+}, [/* depend on records array if exists */]);
+
+
   const [view, setView] = useState('crash') // crash | mines | history
   const [data, setData] = useState(()=> loadState())
   const [balance, setBalance] = useState(()=> {
@@ -71,8 +86,8 @@ export default function App(){
         </div>
 
         <div style={{marginTop:18}} className="small">Recent</div>
-        <div className="recent-list">
-          {data.records.length === 0 && <div className="small" style={{padding:8}}>No plays yet</div>}
+        <div className="recent-list recent-winnings" ref={recentListRef}><div className="recent-winnings-inner">
+          {data.records.length === 0 && <div className="small" style={{padding:8}}>No plays yet</div></div>}
           {data.records.slice(-10).reverse().map((r, idx)=> (
             <div key={idx} className={'recent-item ' + (r.profit>=0? 'win' : 'loss')}>
               <div style={{fontSize:13}}>{r.game}</div>
