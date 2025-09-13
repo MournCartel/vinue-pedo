@@ -153,16 +153,16 @@ header {
 
 /* Injected autoscroll CSS */
 
-/* Autoscroll / recent winnings styling */
+/* Recent winnings autoscroll with newest at top and fade-in effect */
 .recent-list, .recent-winnings, .recent-container {
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse; /* newest at top */
   flex: 1 1 auto;
-  padding-bottom: 12px;
+  padding-top: 12px;
 }
 .recent-list::-webkit-scrollbar, 
 .recent-winnings::-webkit-scrollbar,
@@ -170,4 +170,12 @@ header {
   width: 0;
   height: 0;
   display: none;
+}
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
 }
