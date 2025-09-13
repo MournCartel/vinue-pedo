@@ -1,0 +1,115 @@
+
+
+/* Tab content transition */
+.tab-content {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.tab-content.hidden {
+  opacity: 0;
+  transform: translateX(20px);
+  pointer-events: none;
+  position: absolute;
+}
+
+
+/* Smooth glowing hover effects */
+button, .big-button, .nav-btn {
+  transition: all 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+button:hover, .big-button:hover, .nav-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(160, 100, 255, 0.6);
+}
+button:active, .big-button:active, .nav-btn:active {
+  transform: scale(0.97);
+}
+
+/* Card / panel glow effect */
+.game-panel, .history-panel {
+  transition: box-shadow 0.3s ease-in-out;
+}
+.game-panel:hover, .history-panel:hover {
+  box-shadow: 0 0 20px rgba(160, 100, 255, 0.4);
+}
+
+/* === Dark Mode Animated Background === */
+body, #root {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #050505, #0a0a0f, #140021, #2b0044);
+  background-size: 400% 400%;
+  animation: gradientShift 25s ease infinite;
+  color: #e5e5e5;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Sticky header */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 0, 20, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+/* Sidebar restored to narrow width */
+.sidebar {
+  width: 220px !important;
+  min-width: 220px !important;
+  background: rgba(20,20,30,0.8);
+}
+
+/* Main game area stretches */
+.main {
+  flex: 1;
+  width: auto !important;
+}
+
+/* Panels light-ish with rounded corners */
+.panel, .content, .game-panel {
+  background: #f9f9fb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  padding: 16px;
+}
+
+/* Balance + topup styling */
+.header-balance {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #c5a6ff;
+}
+.topup-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.topup-btn:hover {
+  background: #9d4edd;
+  box-shadow: 0 0 10px #9d4edd;
+}
+
+/* Hide unwanted demo/seed/target labels */
+.demo-label, .seed, .target {
+  display: none !important;
+}
+
+/* === Dark Mode Translucent Panels === */
+.panel, .content, .game-panel {
+  background: rgba(20, 20, 30, 0.6); /* translucent dark */
+  border: 1px solid rgba(124, 58, 237, 0.4); /* faint purple border */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #f1f1f1;
+}
